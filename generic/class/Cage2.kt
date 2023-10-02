@@ -15,4 +15,8 @@ class Cage2<T> {
     fun moveFrom(cage: Cage2<out T>){
         this.animals.addAll(cage.animals)
     }
+
+    fun moveTo(cage: Cage2<in T>){
+        cage.put(this.getFirst())
+    }
 }
