@@ -1,5 +1,14 @@
 package generic.`class`
 
+fun main(){
+    val cage = Cage2<Animal?>()
+    /**
+     * Cage2<T>: nullable
+     * Cage2<T: Any>: non-nullable
+     */
+
+}
+
 //GoldFish만 들어갈수있는 케이지, Carp만 들어갈수 있는 케이지 클래스 작성
 class Cage2<T> {
     private val animals: MutableList<T> = mutableListOf()
