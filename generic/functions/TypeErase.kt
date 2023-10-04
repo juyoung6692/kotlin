@@ -1,4 +1,4 @@
-package generic
+package generic.functions
 
 /**
  * fun <T> T.toSuperString(){
