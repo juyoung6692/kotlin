@@ -1,5 +1,7 @@
 package delegate
 
+import kotlin.properties.Delegates
+
 /**
  * lateinit: 인스턴스화 시점과 변수 초기화 시점을 분리하는것
  * 컴파일 과정에서 nullable 변수로 바뀌고 변수에 접근시 null이면 예외를 발생시킴
@@ -19,8 +21,17 @@ class Person {
 }
 
 fun main(){
+    /*
     val person = Person()
     person.isLee
+     */
+
+    val personObservable = PersonObservable()
+    personObservable.age = 30
+
+    val personMap = PersonMap(mapOf("name" to "이름", "age" to 19))
+    println(personMap.name)
+    println(personMap.age)
 }
 
 /**
@@ -50,3 +61,42 @@ class Person3{
         "이무개"
     }
 }
+
+class PersonObservable{
+    var age: Int by Delegates.observable(20){_, oldValue, newValue ->
+        println("이전 값: $oldValue, 새로운 값: $newValue")
+    }
+}
+
+/**
+ * vetoable parameter의 onChange 함수가
+ * true: 변경 값 적용
+ * false: 변경 값 미적용
+ */
+class PersonVetoable{
+    val height: Int by Delegates.notNull<Int>()
+    var age: Int by Delegates.vetoable(20){_, oldValue, newValue ->
+        newValue >= 1
+    }
+}
+
+/**
+ * 다른 프로퍼티로 위임하기
+ * 이미 사용 중인 프로퍼티명에서 하위호환성으로 인해 이름을 바꾸지 못하는 경우 등에 사용
+ */
+class PersonDelegate{
+    @Deprecated("age를 사용하세요!!", ReplaceWith("age"))
+    val num: Int = 0
+
+    val age: Int by this::num
+}
+
+/**
+ * map getter 가 호출되면
+ * property 아니라 map["property"]를 찾는다
+ */
+class PersonMap(map: Map<String, Any>){
+    val name: String by map
+    val age: Int by map
+}
+
