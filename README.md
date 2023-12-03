@@ -3,7 +3,7 @@
 - 제네릭
 - 지연과 위임
 
-Iterable & Sequence
+<h3>Iterable & Sequence</h3>
 
 Iterable 
 - 연산 중간에 collection을 만듦
@@ -23,3 +23,9 @@ ex) list.asSequence().filter{it.name == "iterable"}.map{it.price}.take(10_000)
 정답은? 아니다.
 컬렉션의 크기가 크지 않다면 sequence의 지연연산에서 약간의 오버헤드가 있기 떄문에 Iterable이 더 빠를 수 있음
 ~~~
+
+
+<h3>고차함수(Higher-Order functions)[[HigherOrderFunctions.kt](higherorderfunctions%2FHigherOrderFunctions.kt)]</h3>
+
+*** 파라미터를 함수로 받거나 함수를 반한하는 함수 ***
+- 함수의 마지막 파라미터가 함수인 경우 lambda 식은 함수 호출부 바깥으로 뺄 수 있음
