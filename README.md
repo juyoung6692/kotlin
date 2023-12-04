@@ -26,7 +26,7 @@ ex) list.asSequence().filter{it.name == "iterable"}.map{it.price}.take(10_000)
 
 ***
 
-<h3>고차함수(Higher-Order functions)[[HigherOrderFunctions.kt](higherorderfunctions%2FHigherOrderFunctions.kt)]</h3>
+<h3>고차함수(Higher-Order functions)</h3>[HigherOrderFunctions.kt](higherorderfunctions%2FHigherOrderFunctions.kt)
 
 *** 파라미터를 함수로 받거나 함수를 반한하는 함수 ***
 - 함수의 마지막 파라미터가 함수인 경우 lambda 식은 함수 호출부 바깥으로 뺄 수 있음
@@ -48,3 +48,12 @@ ex) list.asSequence().filter{it.name == "iterable"}.map{it.price}.take(10_000)
 - *프로퍼티에도 inline을 사용 할 수 있음
 
 ***
+<h3>SAM(Single Abstract Method)</h3>[SingleAbstractMethod.kt](sam%2FSingleAbstractMethod.kt)
+
+<b>SAM interface</b>: 추상 메서드를 하나만 갖고 있는 인터페이스(kotlin은 잘 없음)
+</br>
+
+- java는 람다로 인스턴스화 할 수 있지만 kotlin은 안됨 
+- SAM 생성자를 사용
+- 변수가 아니라 파라미터에 넣을 시에는 바로 람다 사용가능(추상화, 구체화 두 가지 타입이 있을 때 SAM 생성자로 명시적으로 정확하게 넣어줄 필요 있음)
+
