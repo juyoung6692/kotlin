@@ -59,6 +59,7 @@ ex) list.asSequence().filter{it.name == "iterable"}.map{it.price}.take(10_000)
 
 ***
 <h4>연산자 오버로팅<h4>
+  
 [OperatorOverloading.kt](OperatorOverloading%2FOperatorOverloading.kt)
 
 | operator | operation symbol |
