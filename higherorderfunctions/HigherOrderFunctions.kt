@@ -13,6 +13,7 @@ fun compute(num1: Int, num2: Int, op: (Int, Int) -> Int): Int {
 }
 
 fun calculate(num1: Int, num2: Int, op: Operator): Int = op.calcFunc(num1, num2)
+fun calculateOperator(num1: Int, num2: Int, op: Operator): Int = op(num1, num2)//연산자 오버 로딩 사용 calculate와
 
 enum class Operator(
     private val oper: Char,
@@ -23,5 +24,7 @@ enum class Operator(
     MULTIPLY('*', { num1, num2 -> num1 * num2 }),
     DIVIDE(
         '/',
-        { num1, num2 -> if (num2 != 0) num1 / num2 else throw IllegalArgumentException("0으로 나눌 수 없습니다.") }),
+        { num1, num2 -> if (num2 != 0) num1 / num2 else throw IllegalArgumentException("0으로 나눌 수 없습니다.") });
+
+    operator fun invoke(num1: Int, num2: Int) = this.calcFunc(num1, num2)
 }

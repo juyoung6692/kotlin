@@ -57,3 +57,21 @@ ex) list.asSequence().filter{it.name == "iterable"}.map{it.price}.take(10_000)
 - SAM 생성자를 사용
 - 변수가 아니라 파라미터에 넣을 시에는 바로 람다 사용가능(추상화, 구체화 두 가지 타입이 있을 때 SAM 생성자로 명시적으로 정확하게 넣어줄 필요 있음)
 
+***
+<h4>연산자 오버로팅<h4>
+[OperatorOverloading.kt](OperatorOverloading%2FOperatorOverloading.kt)
+
+| operator | operation symbol |
+|-------|------------------|
+| unary | -                |
+| inc   | ++               |
+
+List, Map: list[1], map[1] 과 같은 편의 기능도 operator overloading 임</br>
+invoke overloading: 바로 함수 콜을 하면 자체를 함수처럼 사용 가능 ex) [HigherOrderFunctions.kt](higherorderfunctions%2FHigherOrderFunctions.kt) operator fun invoke
+~~~
+** 복합 연산자
++= , ==, -= ....
+오버로딩이 되어 있으면 적용되지만 없을 경우는 객체가 복사되는 것과 같이 예상과 다르게 동작 할 수 있음
+~~~
+!!!의미에 맞게 사용
+https://kotlinlang.org/docs/operator-overloading.html#arithmetic-operators
